@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{times,fullpage,amsmath}
+\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath}
+
+\title{CS242 Homework \#1}
+\author{Erik Steggall, Lincoln Thurlow, Derya Deryadengi\\ esteggall@soe.ucsc.edu, deryadengi@soe.ucsc.edu, lthurlow@soe.ucsc.edu}
+
+\date{Winter 2014}
+\setlength\parindent{0pt}
+\begin{document} \maketitle \pagestyle{empty}
+\section*{Problem 1}
+\subsection*{a}
+$1- \int_{z_{\epsilon}}^\theta f(z) dz$\\
+
+\subsection*{b}
+$(1- \int_{z_{\epsilon}}^\theta f(z) dz)^N$\\
+\subsection*{c}
+$ \int_{z_{\epsilon}}^\theta f(z) dz) = \epsilon$\\
+$ \int_{\hat{\theta}}^\theta f(z) dz = h_{\theta}$\\
+$h_{\theta} - \epsilon \leq 0$\\
+\subsection*{d}
+
+\section*{Problem 2}
+\subsection*{a}
+The roots right child is pure. All points of $x_{1}$ that are 1 are have the label of 1 (rows 1-3).\\
+\subsection*{b}
+The purity of $x_{2}$ if it is tacked onto the existing tree is $0.5\%$ which gives us:\\
+$ \frac{(p_{1}*n_{1}) + (p_{2}*n_{2})}{n} = \frac{(2*0.5) + (2*0.5)}{2} = 0.5$\\
+\subsection*{c}
+$ \frac{(p_{1}*n_{1}) + (p_{2}*n_{2})}{n} $\\
+Left Gini Impurity $ 2p_{1}(1-0) = 2*1(1-1) = 0$\\
+Right  Gini Impurity $2p(1-0) = 2*1/3(1-1/3) = 4/9$\\
+Average Impurity $\frac{(0*1) + (4/9 * 3)}{4} = 1/3$ \\
+\section*{Problem 3}
+\subsection*{a}
+\textit{According to the color histograms, which attribute looks like it will separate out
+Iris-setosa (blue) from the other classes?}\\
+By selecting the "petal-width" attribute we are able to see that Iris-setosa most clearly.\\
+\subsection*{b}
+\textit{What attribute is tested at the top node? Is it the same attribute that looked best
+based on the histograms?}\\
+Petal width is the first attribute tested. If the petal width is less than or equal to $0.6$ it is classified as Iris-Setosa.\\
+\subsection*{c}
+\textit{Which individual
+features are capable of distinguishing Iris-setosa (dark blue in my plots) from the other
+classes? Is this consistent with the histogram plots?}\\
+Both petal-width and petal-length are pretty accurate attributes for determining the Iris type in both the histogram and the scatter plot. The sepal-width and sepal-length are less accurate determiners in both.\\
+
+\section*{Problem 4}
+\subsection*{a}
+\textit{Compare the complexity of the two trees (depth, number of nodes). Can you interpret the decision trees?}\\
+The depth of the xor tree is 6 and has a count of 37 nodes.\\
+The depth of the majority tree is 3 and has 11 nodes.\\
+The decision tree for majority is less complex because the label can be easily determined by simply counting the first three features, therefore the tree does not need to analyze beyond the first three features. For the xor decision tree the classifier is not recognizing that the label is determined based on only the first three features, the tree analyzes beyond the first three features which makes it much more complex. \\
+ \textit{What happens if you adjust your data file for the XOR problem so that each combination of the values of the three relevant features (ie. 000, 001, 010, etc.) appear equally often (so your training will have to be a multiple of 8)? Explain why the learned decision trees are the way they are.}\\
+As we increase the number of examples in our data the decision tree gets more accurate results. As the number of examples in our data approaches infinity our classification gets closer to $100\%$.\\
+
+
+
+
+\end{document}
