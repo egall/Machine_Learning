@@ -18,6 +18,8 @@ def preceptron_algo():
             print "updating"
             w_array = w_array + np.dot(y, my_inst[1])
             print "w_array = ", w_array
+            mistakes += 1
+    print mistakes
 
 #        for j in range(0,11):
 #            x = my_inst[1][j]
@@ -33,15 +35,21 @@ def generate_instances_list():
     for i in range(0,500):
         # list that will hold list of 11 random 0/1 values
         bin_list = []
+        # keep track of 1's in order to set y value
+        num_of_ones = 0
+        y_value = -1 
         # populate bin_list
         for j in range(0,11):
             binnum = random.randint(0,1)
             if binnum == 0:
                 feature = -1
             else:
+                num_of_ones += 1
                 feature = 1
             bin_list.append(feature)
-        new_inst = (bin_list[0], bin_list)
+        if num_of_ones >= 6:
+            y_value = 1
+        new_inst = (y_value, bin_list)
         instance_array.append(new_inst)
     return instance_array 
 
