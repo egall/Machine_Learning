@@ -43,3 +43,15 @@ for (j in 1:length(year)){
 }
 cat("train = ", train, "\n")
 cat("test = ", test, "\n")
+Auto_train <- Auto[train, ]
+Auto_test <- Auto[test, ]
+mpg01_test <- mpg01[test]
+
+library(MASS)
+
+
+lda.fit = lda(mpg01 ~ cylinders + weight + displacement + horsepower, data = Auto, subset = train)
+
+
+
+
