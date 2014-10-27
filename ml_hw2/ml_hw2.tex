@@ -2,9 +2,9 @@
 
 \usepackage[latin1]{inputenc}
 \usepackage{times,fullpage,amsmath}
-\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools}
+\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools,pdfpages}
 
-\title{CS242 Homework \#1}
+\title{CS242 Homework \#2}
 \author{Erik Steggall, Jay Kim, Rakshit Agrawal \\ esteggall@soe.ucsc.edu, jaykim@soe.ucsc.edu, ragrawa1@ucsc.edu}
 
 \date{Fall 2014}
@@ -12,59 +12,152 @@
 \begin{document} \maketitle \pagestyle{empty}
 \section*{Problem 1}
 
-\subsection*{'+' '+'}
-For the cases of '+' being predicted and '+' being chosen:\\ 
-+++ and ++- and +-+ and -++\\
-Which is:\\
-\begin{align}
-\frac{2}{3}((\frac{2}{3}) + 3 (\frac{1}{3} * (\frac{2}{3}^2)))\\
-\frac{2}{3}(\frac{16}{27} + 3(\frac{4}{27}))\\
-\frac{2}{3}(\frac{28}{27}) = \frac{56}{81}\\
-\end{align}
-\subsection*{'+' '-'}
-For the case of '-' being predicted and '+' being chosen we have 4 cases:\\
-+++ and ++- and +-+ and -++\\
-Which is:\\
-\begin{align}
-\frac{1}{3}((\frac{2}{3}) + 3 (\frac{1}{3} * (\frac{2}{3}^2)))\\
-\frac{1}{3}(\frac{16}{27} + 3(\frac{4}{27}))\\
-\frac{1}{3}(\frac{28}{27}) = \frac{28}{81}\\
-\end{align}
+\subsection*{Chances of KNN producing a positive with noise of 1/3}
+We have cases +++ and ++- and +-+ and -++, which gives us the following probability of getting a positive\\
+$(\frac{2}{3})^3 + 3 (\frac{1}{3} * (\frac{2}{3}^2))$\\ \\
+$\frac{8}{27} + 3(\frac{4}{27})$\\\\  
+$\frac{8}{27} + \frac{12}{27} = \frac{20}{27}$\\\\  
 
-\subsection*{'-' '+'}
-For the case of '+' being predicted and '-'  being chosen:\\
-Which is:\\
-\begin{align}
-\frac{2}{3}((\frac{1}{3}) + 3 (\frac{2}{3} * (\frac{1}{3}^2)))\\
-\frac{2}{3}(\frac{1}{27} + 3(\frac{2}{27}))\\
-\frac{2}{3}(\frac{7}{27}) = \frac{14}{81}\\
-\end{align}
+For predicting a positive and getting a positive:\\
+$\frac{2}{3}(\frac{20}{27}) = \frac{40}{81}$\\\\
+For predicting a negative and getting a positive:\\
+$\frac{1}{3}(\frac{20}{27}) = \frac{20}{81}$\\
 
-\subsection*{'-' '-'}
-For the case of '-' being predicted and '-' being chosen we have 4 cases also:\\
-\begin{align}
-\frac{1}{3}((\frac{1}{3}) + 3 (\frac{2}{3} * (\frac{1}{3}^2)))\\
-\frac{1}{3}(\frac{1}{27} + 3(\frac{2}{27}))\\
-\frac{1}{3}(\frac{7}{27}) = \frac{7}{81}\\
-\end{align}
+\subsection*{Chances of KNN producing a negative with noise of 1/3}
+We have cases - - - and - - + and - + - and + - -, which gives us the following probability\\
+$(\frac{1}{3})^3 + 3 (\frac{2}{3} * (\frac{1}{3}^2))$\\\\
+$\frac{1}{27} + 3(\frac{2}{27})$\\\\
+$\frac{1}{27} + \frac{6}{27} = \frac{7}{27}$\\\\
 
-\subsection*{Average case}
-$ \frac{56/81 + 28/81 + 14/81 + 7/81}{4}  = \frac{32}{108}$
+For predicting a positive and getting a negative we have:\\
+$\frac{2}{3}(\frac{7}{27}) = \frac{14}{81}$\\
+For predicting a negative and getting a negative we have:\\
+$\frac{1}{3}(\frac{7}{27}) = \frac{7}{81}$\\
+
+\subsection*{Average error with noise of 1/3}
+$\frac{False \;Negative/False \;Positive}{4} =$\\\\
+$ \frac{20/81 + 14/81}{4}  = \frac{17}{162}$
+
+\subsection*{Chances of KNN producing a positive with 1/10 error rate}
+$(\frac{9}{10})^3 + 3 (\frac{1}{10} * (\frac{9}{10}^2))$\\\\
+$\frac{729}{1000} + 3(\frac{81}{1000})$\\\\  
+$\frac{729}{1000} + \frac{243}{1000} = \frac{972}{1000}$\\\\  
+
+For predicting a positive and getting a positive we have:\\
+$\frac{9}{10}(\frac{972}{1000}) = \frac{8748}{10000}$\\\\
+For predicting a negative and getting a positive we have:\\
+$\frac{1}{10}(\frac{972}{1000}) = \frac{972}{10000}$\\
+
+\subsection*{Chances of KNN producing a negative with 1/10 error rate}
+$(\frac{1}{10})^3 + 3 (\frac{9}{10} * (\frac{1}{10}^2))$\\\\
+$\frac{1}{1000} + 3(\frac{9}{1000})$\\\\
+$\frac{1}{1000} + \frac{27}{1000} = \frac{28}{1000}$\\\\
+For predicting a positive and getting a negative we have:\\
+
+$\frac{9}{10}(\frac{28}{1000}) = \frac{252}{10000}$\\\\
+For predicting a negative and getting a negative we have:\\
+$\frac{1}{10}(\frac{28}{1000}) = \frac{28}{10000}$\\
+
+\subsection*{Average error with noise of 1/10}
+$\frac{False \;Negative/False \;Positive}{4} =$\\\\
+$ \frac{972/10000 + 28/10000}{4}  = \frac{1}{40}$
+
 
 
 \section*{Problem 2}
 \subsection*{a}
-The data has a binary separation for each feature, so if it takes on the label of it's neighbor than it is correct.\\
-\subsection*{b}
-The accuracy goes from 100\% to 70.18\%. 
+When running the training set option, IB1 correctly classifies 100\% of the instances. This is most likely due to over-fitting.\\
+
+\subsection*{b} 
+When using 10-fold cross validation (CV), IB1 correctly classifies 70.2\% of the instances. This supports the observation that IB1\rq{}s performance on (a) was most likely due to over-fitting.\\
+
 \subsection*{c}
-In the general case I would expect the greater the K value means a tradeoff between more computation but a more accurate the result. This is what I see in this case, where we get 70.18\% accuracy with $k = 1$, 72.65\% accuracy with $k = 2$ and 73.17\% accuracy with $k = 5$.\\
+We would expect 3NN or 5NN to perform better than IB1 because the effects of over-fitting on the training set should be diminished as $k$ is increased. 3NN correctly classifies 85.8\% and 72.7\% of the instances on the training set and 10$-$fold CV, respectively. 5NN correctly classifies 82.3\% and 73.2\% of the instances on the training set and 10$-$fold CV, respectively. While 3NN and 5NN perform slightly better than IB1, the performance increase was not as dramatic as we expected. The results from parts (a$-$c) are summarized in the table below.\\
+
+\begin{table}[ht]
+\caption{Comparison of KNN for $ K = 1,3,5$}
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+ & 1NN & 3NN & 5NN\\ [0.5ex]
+\hline
+\% correct (training) & 100.0 & 85.8 & 82.3 \\ 
+\% correct (10$-$fold CV) & 70.2 & 72.7 & 73.2 \\
+\hline
+\end{tabular}
+\label{table:table2c} 
+\end{table}
+
 \subsection*{d}
-I chose to add another 10 versions of class, which had either positive or negative valued entries. This resulted in 100\% prediction accuracy. I suspect that this flaw, having too many irrelevant attributes, is one of major drawbacks of KNN.\\
+Ten additional attributes (diabetes pedigree function) were added to the diabetes.arff file. The table below shows the \% correctly classified instances for this modified data using 1NN, 3NN, and 5NN.\\
+
+\begin{table}[ht]
+\caption{Comparison of KNN for $ K = 1,3,5$}
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+ & 1NN & 3NN & 5NN\\ [0.5ex]
+\hline
+\% correct (training) & 100.0 & 83.9 & 80.3 \\ 
+\% correct (10$-$fold CV) & 67.3 & 72.0 & 69.5 \\
+\hline
+\end{tabular}
+\label{table:table2d} 
+\end{table}
+
 \subsection*{e}
-The accuracy dropped to 52.7344\%, this is surprising because it means that the $\frac{1}{3}$ which are legitmate attributes only count for ~2\% of the prediction accuracy.\\
+Twenty random (0,1)$-$attributes were added to the original diabetes.arff file, and all attributes were normalized using the unsupervised normalization filter. The table below shows the \% correctly classified instances for this modified data using 1NN, 3NN, and 5NN.
+
+\begin{table}[ht]
+\caption{Comparison of KNN for $ K = 1,3,5$}
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+ & 1NN & 3NN & 5NN\\ [0.5ex]
+\hline
+\% correct (training) & 100.0 & 81.5 & 75.5 \\ 
+\% correct (10$-$fold CV) & 60.3 & 62.8 & 62.0 \\
+\hline
+\end{tabular}
+\label{table:table2e} 
+\end{table}
+
 \subsection*{f}
-It appears from the last two tests that Weka does normalize the attributes. Both of these tests are good examples of this.\\
+We can easily use Weka to determine if IB1 automatically normalizes the attributes. First generate a dataset where the attributes are on dramatically different scales, and thus require normalization (e.g. modified dataset from part (e)). Run Weka\rq{}s IB1 once before normalizing the data, and once after normalizing the data. Compare the results of the two runs. If they are the same, then IB1 most likely normalizes its input data prior to execution.\\
+
+\section*{Problem 3}
+\subsection*{a}
+The perceptron started classifying correctly during the 1st epoch. There were a total of 8 errors.\\
+
+\subsection*{b}
+We ran the perceptron on the shifted dataset using the \lq{}add-a-dimension\rq{} trick to avoid updating the bias separately. The weight and bias were represented as a single vector with 12 elements, all initialized to 0. An extra feature with value 1 was added to the feature vector as well.\\
+
+The perceptron made 40 mistakes and converged in the 1st epoch. The bias term was -4. It makes sense that the bias is not 0 since the dataset was shifted.\\
+
+\subsection*{c}
+The perceptron started classifying correctly during the 2nd epoch. There were a total of 55 errors. We would expect that labeling examples as the majority would take more epochs for the perceptron to converge.\\In part (a), the perceptron converges when the weight for the first feature (the only relevant one) reaches a certain magnitude. Since the sign of the first feature always matches the sign of the label, each update increments the weight for the first feature by +1. Thus the perceptron converges relatively quickly. Note that the probability that any of the other features matches the label is roughly 0.5. Therefore, the other feature weights remain close to 0.\\When the examples are labeled as the majority, the feature weights need to be balanced. That is, the perceptron converges when all weights reach a certain magnitude, where the final weights are approximately equal across features. Since the probability of a match between any one feature and the label is greater than 0.5 (majority is greater than 50\%), all of the feature weights will increase over iterations. Also the chance that a feature is incremented by 1 (the alternative is being decremented by 1) during an update is the same for all features. Thus all feature weights should increase at similar rates in the long run. However, this is slower than the monotonic increase of the first feature weight in part (a).\\
+
+\subsection*{d}
+\begin{table}[ht]
+\caption{Comparison of three perceptron variants}
+\centering
+\begin{tabular}{c c c c c c}
+\hline\hline
+Method & \% Correct & Precision & Recall & FPR & F1\\ [0.5ex]
+\hline
+$w_{1000}$ & 74.0 & 0.72 & 0.82 & 0.35 & 0.77 \\ 
+$w_{avg}$ & 78.4 & 0.72 & 0.95 & 0.40 & 0.82 \\
+voted & 70.0 & 0.71 & 0.70 & 0.31 & 0.71 \\
+\hline
+\end{tabular}
+\label{table:table3d} 
+\end{table}
+
+The average weight method ($w_{avg}$) performed the best in terms of \% correctly classified (78.4\%), and had the highest recall (0.95). On the other hand, the false positive rate (FPR) was also very high (0.40). While the $w_{1000}$ method had a lower FPR, the recall was also much lower (0.82). Since the $w_{avg}$ method achieves a much higher recall at the same level of precision as the $w_{1000}$ method, the F-measure for $w_{avg}$ is also higher. The voted perceptron performed the worst; it classified 70.0\% of the test instances correctly and had an F1 of 0.71. It is worth noting that these perceptron runs did not converge within 2 epochs (or even within 1000 epochs). This is most likely because random noise was introduced during label generation.\\
+
+\section*{Problem 4}
+The ROC curve is shown below. The f-measure is maximized when $\theta \le -6$.\\
+\includegraphics[scale=0.8]{./roc_curve.pdf}
 
 
 \end{document}
