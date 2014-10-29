@@ -5,13 +5,43 @@
 \usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools,pdfpages}
 \DeclareMathSizes{10}{10}{10}{10}
 
-\title{CS242 Homework \#2}
+\title{CS242 Homework \#3}
 
-\author{}
+\author{esteggall, mcboivin, seanblum}
 
 \date{Fall 2014}
 \setlength\parindent{0pt}
 \begin{document} \maketitle \pagestyle{empty}
 \section*{Problem 1}
+%Okay this is fucking with me, I found like 3 different ways to calculate degrees of freedom. The one I find most reasonable is here, the other two are commented out with the sources included. lemme know what you guys think...
+Degrees of freedom = $n1 + n2 -2 = 10 + 10 -2 = 18$\\
+% source: http://statistics.berkeley.edu/computing/r-t-tests
+
+
+%Degrees of freedom = $n/2 -1 = 10/2 -1 = 4$\\
+%source:http://en.wikipedia.org/wiki/Student%27s_t-test#Paired_samples
+% This way seems the least likely as it would give us -1 degrees of freedom: n1 - n2 - 1
+% source: http://formulas.tutorvista.com/math/degrees-of-freedom-formula.html
+
+The t-statistic paired t-statistic formula is:\\\\
+$\frac{\bar{X}_{D} - 0}{S_{D}/\sqrt{n}}$\\\\
+Where  $\bar{X}_{D}$ is the mean of the difference of both samples, which is $0.05$, $S_{D}$ is the standard deviation of the difference between both samples, which is $0.085$ for us, and $n$ is the sample size, which in this case is 10.\\\\
+Plugging in our values we get:\\\\
+$\frac{0.5}{0.85/\sqrt{10}} = 1.86$\\\\
+% verified using R
+In order to determine the chance that A would appear this much better we need to find the p-value.\\
+We calculated our p-value using R and got:\\\\
+$p-value = 0.04786$\\\\
+To determine if this is acceptable we consult the significance leves. (Found on wikipedia)\\
+\begin{itemize}
+ \item $p \leq 0.01$  : very strong presumption against null hypothesis\\
+ \item $0.01 < p \leq 0.05$  : strong presumption against null hypothesis\\
+ \item $0.05 < p \leq 0.1$ : low presumption against null hypothesis\\
+ \item $p > 0.1$ : no presumption against the null hypothesis\\
+\end{itemize}
+According to this, we have a strong presumption aginst the null hypothesis, so our chances our good that the differences between the two samples are sampling error, however it is close to the threshold of 0.05, so we can't be too confident.\\
+
+
+
 
 \end{document}
