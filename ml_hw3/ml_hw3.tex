@@ -40,7 +40,20 @@ To determine if this is acceptable we consult the significance leves. (Found on 
  \item $p > 0.1$ : no presumption against the null hypothesis\\
 \end{itemize}
 According to this, we have a strong presumption aginst the null hypothesis, so our chances our good that the differences between the two samples are sampling error, however it is close to the threshold of 0.05, so we can't be too confident.\\
-
+\section*{Problem 2}
+\subsection*{a}
+% Did you guys get funky ass alien characters when you loaded the .arff? wtf
+% Think this is what he means by model:
+Model is:\\
+\verb|LinearRegression -S 0 -R 1.0E-8|\\
+The root mean squared error we got is 0.1897.\\
+\subsection*{b}
+We can observer that Weka gives us the following formula:\\\\
+$y = 4.36 + (-0.13*x_{1}) + (1.84*x_{2}) + (-0.89*x_{3})$\\\\
+Plugging in our x's we get:\\\\
+$y = 4.36 + (-0.13*3) + (1.84*3) + (-0.89*5)$\\\\
+$y = 4.36 + (-0.13*3) + (1.84*3) + (-0.89*5)$\\\\
+$y = 4.36 - 0.39 + 5.52 - 4.45 = 5.04$\\\\
 
 
 
