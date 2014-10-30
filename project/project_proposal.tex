@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{times,fullpage,amsmath}
+\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools,pdfpages}
+\DeclareMathSizes{10}{10}{10}{10}
+
+\title{Blog Likeliness Prediction Based on User's 
+``Likes"}
+\author{Erik Steggall, Rakshit Agrawal \\ esteggall@soe.ucsc.edu, ragrawa1@ucsc.edu}
+
+\date{Fall 2014}
+\setlength\parindent{0pt}
+\begin{document} \maketitle \pagestyle{empty}
+
+\section*{Our problem}
+We would like to create a learner that will judge whether or not a user will like a new blog based on the existing information about user and what all blogs they currently ``like''. 
+\section*{The data set}
+Our data set is available through kaggle. It has been gathered from all of the blogs that Wordpress hosts, which is a total of ~90,000 active blogs. The data is split into two releases. Both releases contain information from a six week period that contains all of the ``likes" from of these blog posts. This information is split into two sets, the first set containing the information from each user; which blogs and posts that they ``liked". The second set containing information for each blog and which users ``liked" it, as well as the posts belonging to that blog.\\
+
+\section*{Methods}
+On the surface this appears to be a classification problem. Since we have a labeled training set, we will be able to utilize some of the supervised learning algorithms we have gone over in class. We will look into the best algorithms for this problem, currently our list is: Naive Bayes Classifier, Logistic regression, Fisher's linear discriminate, Perceptron, Least squares support vector machines, and possibly neural networks.\\
+
+\section*{Evaluation}
+Our data set also contains a third dataset that is structured in the same fashion as the first two datasets but without labels indicating the user's  ``likes''. This will be used by us for evaluating our data performance. Due to the large size of our training set, we also have the possibility of splitting data for test, training and validation if required. \\
+% I have to think about this one more, I couldn't find any information on the actual ground truth of this test set. Otherwise we might consider splitting the training data and creating our own test set from there?
+
+\end{document}
