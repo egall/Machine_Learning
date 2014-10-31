@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{times,fullpage,amsmath}
+\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools, pdfpages}
+\DeclareMathSizes{10}{10}{10}{10}
+
+\title{TIM209: Midterm}
+
+
+\setlength\parindent{0pt}
+\begin{document} \maketitle \pagestyle{empty}
+
+\section*{Problem 1}
+
+\subsection*{a}
+If we have a large sample of n and a low number of predictors, a flexible method would be better because it will fit the data better than a non-flexible method.\\
+
+\subsection*{b}
+If we have a small number of samples, a flexible method would predict worse, because it has a higher probability of overfitting on the few data points.\\
+
+\subsection*{c}
+If the relationship between the predictors and the response is highly non linear a more flexible approach will be able to fit the data better.\\
+
+\subsection*{d}
+If the variance is high, we run the risk of overfitting because the model will fit according to the data, which in this case is not going to be accurate. An inflexible method wouldn't fall into such a trap.\\
+
+\section*{Problem 2}
+\subsection*{What is linear regression}
+Linear regression is the fitting of a linear model to a number of samples that are representative of a whole population.\\
+
+\subsection*{What is the coefficient of determination of a linear regression model?}
+The coefficients are the weights that belong to a certain variable/predictor. If the variable is highly correlated with the result of the model it is given a higher weight/coefficient. If it does not effect the result, it is given a weight/coefficient closer to 0.\\
+
+\subsection*{What is a parametric approaches approach to machine learning? Give examples of such machine learning algorithms.}
+The parametric approach is to create a function based on parameters of the input data. This function will predict the outcome of new events based on the parameters seen in past events. Parametric algorithms include linear discriminate analysis, quadratic discriminate analysis, and the logistic function.\\
+
+\subsection*{What is a non-parametric to approach to machine learning? Give an example of such a machine learning algorithm.}
+A non-parametric approach would be a model that does not create a function to guess the probability of a next event. An example of a non-parametric approach is K-Nearest-Neighbor.\\
+
+\section*{Problem 3}
+\subsection*{a}
+If the Bayes decision boundary is linear we would expect QDA to preform better on the training data, because it is more flexible it will be able to fit the data better regardless of the decision boundary. However, LDA will preform better on the test data because of the tendency of QDA to overfit from the training data.\\
+\subsection*{b}
+If the Bayes decision boundary is non-linear we would expect QDA to preform better on both the training and test data. It will preform better on the training data because it is more flexible. And will preform better on the test data, again, because it is more flexible than linear, it will certainly fit the data better.\\
+
+\subsection*{c}
+In general, as the sample size increases we will expect to see QDA preform better. This is because it is more flexible (see Problem1a). Even if the model take a linear form, QDA may do better because it will flatten out if it has enough samples.\\
+
+\subsection*{d}
+False, but. I would say that it depends on the number of samples. As described above, as the number of samples grows to infiinity, QDA will flatten out. However, since this is the test data we're talking about, if the number of samples in training was small, it will preform much worse than LDA due to overfitting.\\
+
+\section*{Problem 4}
+\subsection*{a}
+Cross validation is the process of splitting the training data into equal sized portions (usually 5 or 10) in order to maximize the training data. For this example we will say we split our training data N in to N/10 groups. With our subgroups, we can combine 10 different groupings where each of these 10 groupings contain 9 of the subgroups. This way, we effectively created 10 different training sets out of our single training set. This enables us to combat overfitting, as each of our 10 new training sets will leave out potential outliers, which may have been the cause of overfitting had we used just one training set containing all of the data.\\
+\subsection*{b}
+No, for some classification problems we have a binary classification, so it is useful to have a linear model to predict, because we want to split the data in two. With less flexible models like linear models we get the benefit of interpretability at a sacrifice of flexibility, but if we don't need the flexibility than we win because we cut down on overfitting using the linear, or less flexible model. An example of this may be a disease diagnosis where we want to split the groups into tested positive, and tested negative. We want an easy to understand model so that we are able to interoperate it correctly and not make any mistakes. 
+
+\subsection*{c}
+The three components of the error model are variance, bias, and variance + bai$s^2$. I don't have the time to graph it out, but as we increase our error, our variance goes up, our bias goes down, and our variance vs bia$s^2$ creates a hockey stick type curve.\\
+\subsection*{d}
+The bias variance tradeoff is the problem that; as we decrease bias, we increase variability, and vice versa.\\
+To further this I will define bias and variance:\\
+\textit{Bias}: The overall "correctness" of the model, or how well the model fits the data overall.\\
+\textit{Variance}: How different the outcome of our model is depending on different inputs.\\
+So, if our model has a high variance, it will have a low bias, because, on average, our model will predict the data very well, however, for each individual instance, our outputs may be very different.\\
+Conversely, we can have relatively similar outputs where none of them fit the data very closely. This would result in low variance and high bias.\\
+A model with low variance and high bias would be a linear model. It is inflexible, so each prediction will be fairly similar to one another, however it may not come very close to fitting our data.\\
+A cubic approach on the otherhand, would have a low bias, and a high variance because it may fit each example of training data very well, but taking the average of each approach would come much closer to fitting the data than the linear model.\\
+
+\section*{Problem 5}
+\subsection*{Expected value}
+The expected value for the discrete variable of age is 23.5, since it's discrete, we will round up to 24.\\
+For height, our expected value is 79.85, which rounds to 80, the variance is 5.3.\\
+weighted age mean = 5.396215 \\
+weighted age variance = 20.03252\\
+\subsection*{Data frames vs matrices}
+A matrix is used when the data is uniform. Data frames are used when the data has different types depending on the column.\\
+
+
+\end{document}
