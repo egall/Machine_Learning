@@ -13,15 +13,7 @@
 \setlength\parindent{0pt}
 \begin{document} \maketitle \pagestyle{empty}
 \section*{Problem 1}
-%Okay this is fucking with me, I found like 3 different ways to calculate degrees of freedom. The one I find most reasonable is here, the other two are commented out with the sources included. lemme know what you guys think...
-Degrees of freedom = $n1 + n2 -2 = 10 + 10 -2 = 18$\\
-% source: http://statistics.berkeley.edu/computing/r-t-tests
-
-
-%Degrees of freedom = $n/2 -1 = 10/2 -1 = 4$\\
-%source:http://en.wikipedia.org/wiki/Student%27s_t-test#Paired_samples
-% This way seems the least likely as it would give us -1 degrees of freedom: n1 - n2 - 1
-% source: http://formulas.tutorvista.com/math/degrees-of-freedom-formula.html
+Degrees of freedom = $n - 1 = 9$\\
 
 The t-statistic paired t-statistic formula is:\\\\
 $\frac{\bar{X}_{D} - 0}{S_{D}/\sqrt{n}}$\\\\
@@ -40,6 +32,7 @@ To determine if this is acceptable we consult the significance leves. (Found on 
  \item $p > 0.1$ : no presumption against the null hypothesis\\
 \end{itemize}
 According to this, we have a strong presumption aginst the null hypothesis, so our chances our good that the differences between the two samples are sampling error, however it is close to the threshold of 0.05, so we can't be too confident.\\
+
 \section*{Problem 2}
 \subsection*{a}
 % Did you guys get funky ass alien characters when you loaded the .arff? wtf
@@ -54,7 +47,51 @@ Plugging in our x's we get:\\\\
 $y = 4.36 + (-0.13*3) + (1.84*3) + (-0.89*5)$\\\\
 $y = 4.36 + (-0.13*3) + (1.84*3) + (-0.89*5)$\\\\
 $y = 4.36 - 0.39 + 5.52 - 4.45 = 5.04$\\\\
+\subsection*{c}
+We got the values of:\\
+\begin{verbatim}
+           [,1]
+[1,]  4.3608029
+[2,] -0.1342938
+[3,]  1.8476838
+[4,] -0.8965848
+\end{verbatim}
+Which are identical to the coefficients from part A.\\
+\subsection*{d}
+There are no changes to the values of the coefficients.\\
 
+\subsection*{e}
+The values of the coefficients are pretty close to the coefficients from part A, except the weight belonging to $x_{1}$ is non existent. This is because the ridge parameter evidently cancels out the value of the coefficient that would belong to $x_{1}$.\\
 
+\section*{Problem 3}
+% http://perso.uclouvain.be/francois.glineur/files/papers/OptEng10a-final.pdf
+\subsection*{a}
+\subsection*{b}
+\subsection*{c}
+\section*{Problem 4}
+% http://cbcb.umd.edu/~hcorrada/PML/homeworks/HW04_solutions.pdf
+\subsection*{a}
+\begin{tabular}{| l | c | r |}
+ \hline      
+ $w*x + b$ & $\bar{y}$ & L \\ \hline
+  10 & +1 & 0.0000655 \\ \hline      
+  4 & +1 & 0.026 \\ \hline      
+  10 & +1 & 14.42 \\ \hline  
+   4 & +1 & 5.8 \\ \hline            
+\end{tabular}
+\subsection*{b}
+$ \frac{\partial }{\partial b} \frac{1}{\ln 2}\ln(1 + e^{-y(w*x + b)}) = $\\\\
+$ \frac{1}{\ln 2} \frac{-y*e^{-y(w*x +b)}}{1 + e^{-y(w*x+b)}}$\\\\
+\subsection*{c}
+$ \frac{\partial }{\partial w} \frac{1}{\ln 2}\ln(1 + e^{-y(w*x + b)}) = $\\\\
+$ \frac{1}{\ln 2} \frac{-yx*e^{-y(w*x +b)}}{1 + e^{-y(w*x+b)}}$\\\\
+\subsection*{d}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+$w_{1}$ & $w_{2}$ & b & $x_{1}$ & $x_{2}$ & y & $w*x + b$ & $\bar{y}$ & L & $\frac{\partial{l}}{\partial{w_{1}}}$ & $\frac{\partial{l}}{\partial{w_{2}}}$ & $\frac{\partial{l}}{\partial{b}}$\\ \hline
+1 & 2 & 3 & 3 & -1 & -1 & 4 & +1 & 5.8 & 4.25 & -2.83 & 1.417 \\ \hline
+1.425 & 1.717 & 3.142 & 3 & -1 & -1 & 5.699 & +1 & 8.227 & - & - & - \\ \hline
+\end{tabular}
+\end{document}
 
 \end{document}
