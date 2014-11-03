@@ -2,31 +2,34 @@ library(ElemStatLearn)
 library(gettingtothebottom)
 data(ozone)
 
+# Find dimensions of ozone
 dimensions = dim(ElemStatLearn::ozone)
 cat("ozone dimensions =", dimensions, "\n")
 
 print(summary(ElemStatLearn::ozone))
 
+# Model ozone
 ozone_lm = lm(formula = ozone ~ ., data = ozone)
 print(summary(ozone_lm))
 
-y <- ElemStatLearn::ozone
+# Take y value to use for gradient descent
+#y <- ElemStatLearn::ozone
 
 attach(ElemStatLearn::ozone)
-cat("radiation = \n")
-print(radiation)
-print(temperature)
-print(wind)
 
+# Take y value to use for gradient descent
 y <- ozone[,1]
 print(y)
+# Create matrix with radiation, temp, and wind as columns
 matrix <- cbind(1,radiation, temperature, wind)
 print(matrix)
+# Set theta to be zeros
 theta <- c(0, 0, 0, 0)
 
 m <- nrow(matrix)
 
 
+# Set cost
 cost <- sum(((matrix%*%theta)- y)^2)/(2*m)
 print(cost)
 
@@ -46,6 +49,7 @@ print(theta)
 
 print(matrix)
 
+# function used for gradient decent
 f <- function(X, y, b) {
     (1/2) * norm(y - X %*% b, "F")^2
 }
@@ -53,6 +57,7 @@ grad_f <- function(X, y, b) {
     t(X) %*% (X %*% b - y)
 }  
 
-plzwork <- gdescent(f, grad_f, matrix, y, 0.001, 100000) 
-print(summary(plzwork))
+# Take gradient decent
+grad_decent <- gdescent(f, grad_f, matrix, y, 0.001, 100000) 
+print(summary(grad_decent))
 
