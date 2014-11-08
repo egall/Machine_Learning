@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{times,fullpage,amsmath}
+\usepackage{enumerate,graphicx,hyperref,verbatim, amsmath, mathtools, pdfpages,enumitem}
+\DeclareMathSizes{10}{10}{10}{10}
+\title{TIM209 Homework \#4}
+\author{Erik Steggall \\ esteggall@soe.ucsc.edu}
+
+\date{Fall 2014}
+\setlength\parindent{0pt}
+\begin{document} \maketitle \pagestyle{empty}
+\section*{Problem 1}
+\subsection*{a}
+K-fold cross validation is the process of splitting up the training data into groups in order to get more training runs out of the same training data. K-fold cross validation is implemented by splitting the training data into K chunks (usually with $k = 5$ or $k = 10$). From here, we run k different trainings, each time leaving out a single group out of the k chunks. 
+\subsection*{b}
+\begin{enumerate}[label=(\roman*)]
+    \item This method provides much more variable training than the simple validation set approach, which is good because this cuts down on overfitting as it has to fit 10 different sets of training data correctly instead of just one. An example is that it helps cut down on high-leverage points as each high-leverage point is left from at least one test, so the model then has to fit the data without that high-leverage point.\\
+    \item This method is much less computationally intensive than LOOCV because instead of running n tests (n = number of samples), it only has to run K times, where K is usually 5 or 10. K-fold cross validation doesn't have much difference in outcome from LOOCV, so in almost every way it is a win.\\
+\end{enumerate}
+\section*{Problem 2}
+We can run the bootstrap method which will give us slightly different responses for Y given X. With the resulting responses we can find the standard deviation using the standard formula for standard deviation.\\
+
+\section*{Problem 3}
+\subsection*{a}
+For this dataset $n = 100, p = 2$, since there are 100 samples and 2 different predictors.\\
+\subsection*{b}
+The scatterplot forms a convex plot.\\
+
+\subsection*{c}
+\begin{verbatim}
+cv error for 1 = [1] 5.890979 5.888812
+
+cv error for 2 = [1] 1.086596 1.086326
+
+cv error for 3 = [1] 1.102585 1.102227
+
+cv error for 4 = [1] 1.114772 1.114334
+\end{verbatim}
+
+\subsection*{d}
+I got the same values, this is because LOOCV runs on the same data and runs n times, regardless of the added randomess.\\
+\subsection*{e}
+The quadratic solution had the lowest error. This is because the data was shaped as a parabola, so a two degree polynomial would have the best fit.\\
+\subsection*{f}
+If we examine the 4 degree polynomial we can see that the p-values indicate the 2nd degree polynomial being the best fit, followed by the first order. The 3rd and 4th order polynomials apparently do not provide a good fit.\\
+\begin{verbatim}
+Call:
+glm(formula = y ~ poly(x, 4))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.8914  -0.5244   0.0749   0.5932   2.7796  
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -1.8277     0.1041 -17.549   <2e-16 ***
+poly(x, 4)1   2.3164     1.0415   2.224   0.0285 *  
+poly(x, 4)2 -21.0586     1.0415 -20.220   <2e-16 ***
+poly(x, 4)3  -0.3048     1.0415  -0.293   0.7704    
+poly(x, 4)4  -0.4926     1.0415  -0.473   0.6373    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 1.084654)
+
+    Null deviance: 552.21  on 99  degrees of freedom
+Residual deviance: 103.04  on 95  degrees of freedom
+AIC: 298.78
+
+Number of Fisher Scoring iterations: 2
+\end{verbatim}
+
+\section*{Problem 4}
+\subsection*{a}
+The mean is 22.53.\\
+\subsection*{b}
+The standard error is 0.4088.\\
+\subsection*{c}
+The standard error is 0.4127 from the bootstrap.\\
+\begin{verbatim}
+ORDINARY NONPARAMETRIC BOOTSTRAP
+
+
+Call:
+boot(data = medv, statistic = boot_fn, R = 1000)
+
+
+Bootstrap Statistics :
+    original      bias    std. error
+t1* 22.53281 0.008418379   0.4127319
+\end{verbatim}
+
+\subsection*{d}
+The results are very similar:\\
+My confidence interval estimate - (21.71521, 23.35041)\\
+t test estimate - (21.72953, 23.33608)\\
+
+
+\end{document}
