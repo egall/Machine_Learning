@@ -1,0 +1,48 @@
+\documentclass[12pt]{article} % <--- Please use 12pt font
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+
+
+% Please put your title here (not more than two lines)
+\title{Blog Likeliness Prediction Based on User's ``Likes"}
+
+% List the name of the speaker/presenter and any coauthors here 
+% together with their affiliations
+\author{\textbf{Rakshit Agrawal, Erik Steggall}\\ esteggall@soe.ucsc.edu, ragrawa1@ucsc.edu}
+
+
+\date{} % <--- Please leave date empty
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+\noindent \textbf{Abstract} \\
+\noindent Please put your abstract here (not more than half a page)
+
+\vspace{18pt}
+\noindent \textbf{Keywords} - Mean Average Precision (MAP)
+
+
+\noindent \textbf{Introduction} \\
+\noindent 
+
+% What is the general problem that we are addressing
+Recent trends have lead to a large increase in the online presence of the average Internet user across the globe. Companies such as Google, Facebook, and Netflix store huge corpuses of data with detailed information about each user on their system, however without automated analysis these vast data corpuses are largely useless. There is a current effort to utilize the information stored in these corpuses in order to build a customized Internet tailored to each users individual preferences. At the core of this effort is machine learning, and in particular, the use of \textit{recommender systems}.\\
+% What is a recommender system and how does it help solve his problem?
+Recommender systems are intended to aid a user by recommending items that they may be interested in. Theoretically, recommender systems will aid a user in exploring the Internet which is becoming increasingly complex, and thus confusing for most users. In order to provide these suggestions, recommender systems use information about the users current preferences and information who share similar preferences. Recommender systems can be broken down into two main schools; content based recommender systems and collaborative recommender systems.\\
+Content based recommender systems are designed around using the users past preferences in order to generate a list of items that may be of interest to them in the future. These systems examine similarities among items on the system and will recommend an item to a user if it shares a number of similarities with items that they have indicated a preference for in the past. Content based recommender systems are excellent at recommending items that a particular user may be interested based on their past, but are limited to that users past preference, thus, they are not good at predicting outside of a users current preference list which makes them prone to suggesting ``stale" items.\\
+To contrast, collaborative recommender systems are designed around examining similarities among users. A collaborative recommender system will examine the relationships between user preference lists and suggest items to a user based on items that users with similar interests preferred. This allows the recommender system to suggest items that are outside of the users current preference list, thus providing spontaneity in the items that are suggested.\\
+% Include hybrid system?
+% What do we have in our specific case?
+For this project we are implementing a hybrid of these two techniques in order to analyze a dataset of users and blogs to predict which blogs they are most likely to be interested in. \\
+% What is our specific problem we are trying to solve 
+
+\noindent \textbf{Methodology/Plans} \\
+\noindent 
+Our dataset is supplied through a Kaggle competition and is split into sets of users and sets of blogs that each contain dictionaries that link users and blogs if the blog was ``liked" by a user. The data was harvested from ~90,000 Wordpress blogs over the period of 6 weeks, we plan on splitting off the last week in order to produce a test set for our data as the existing test set on Kaggle does not have any ground truth for us to understand if we predicted accurately or not.\\
+We plan to create separate algorithms for collaborative and content based systems, and then merge the results to form a hybrid system. We will evaluate our accuracy based on mean average precision (MAP), which is the  We are using   write our algorithm in Python using NumPy
+
+
+\end{document}
