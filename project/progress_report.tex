@@ -41,8 +41,69 @@ For this project we are implementing a hybrid of these two techniques in order t
 
 \noindent \textbf{Methodology/Plans} \\
 \noindent 
+\textit{Dataset}\\
 Our dataset is supplied through a Kaggle competition and is split into sets of users and sets of blogs that each contain dictionaries that link users and blogs if the blog was ``liked" by a user. The data was harvested from ~90,000 Wordpress blogs over the period of 6 weeks, we plan on splitting off the last week in order to produce a test set for our data as the existing test set on Kaggle does not have any ground truth for us to understand if we predicted accurately or not.\\
-We plan to create separate algorithms for collaborative and content based systems, and then merge the results to form a hybrid system. We will evaluate our accuracy based on mean average precision (MAP), which is the  We are using   write our algorithm in Python using NumPy
+
+\textit{Preprocess}\\
+
+\textit{Experiments and Evaluation}\\
+In order to evaluate the performance of our algorithms we plan to use the measure of mean average precision or (MAP) to compare against our selected items.\\%Need to define this above.
+We plan to create separate algorithms for collaborative and content based systems, and then merge the results to form a hybrid system. We will evaluate all three individually, but ultimately we are trying to improve the MAP scores on the hybrid algorithm which we expect to get the best results.\\ 
+
+\textit{Parameter tuning}\\
+%We plan to use the normal equation and Pearson Correlation Coefficient?
+
+\textit{Learning methods and tools}\\
+We are writing our algorithms in Python using NumPy. Since we are using multiple algorithms to design each recommender system we plan on writing them out in Python, then testing individual aspects of our code against libraries written in R. We are using an SQL database to store our dataset.\\
+We plan to follow a similar path as the Bellkor team did for the Netflix 2007 challenge. In their writeup of the competition  \cite{bell07} they use KNN, singular value decomposition with ridge regression, and restricted Boltzmann machines. We plan to use KNN to cluster user-user and blog-blog groups that have similar attributes. \\
+
+\noindent \textbf{Progress/Problems} \\
+\noindent 
+\textit{Progress}\\
+So far we have done most of the background needed in determining the algorithms that we will be using for this project. We have also written high level pseudocode for our general problem.\\
+We have also done a good amount of investigation of our dataset, including creating a SQL database to hold user and blog information. We have also written the code to parse the dataset and populate our database.\\
+\textit{Problems}\\
+We have a very large dataset and may have problems with the sparsity of likes in our dataset. This may cause problems with our matrix factorization, but from our reading we have found that the Bellkor team had similar problems and were successful in their works \cite{bell08}.\\
+A related worry is about generating null suggestion lists, as they will have perfect accuracy, but do not fulfill the intent of our project.\\
+We also need a more concrete plan as to how we will combine our algorithms to create a full recommender system. This may be difficult as neither of us was familiar with recommender systems before starting this project and we are still unclear on some of the components such as SVD factorization.\\
+
+\begin{thebibliography}{1}
+\bibitem{bell07}
+  Robert M. Bell, Yehuda Koren, Chris Volinsky
+  \emph{Modeling Relationships at Multiple Scales to Improve Accuracy of Large Recommender Systems}
+  Florham Park, NJ
+  2007
+  
+\bibitem{bell08}
+  Robert M. Bell, Yehuda Koren, Chris Volinsky
+  \emph{The BellKor 2008 Solution to the Netflix Prize}
+  Florham Park, NJ
+  2008
+  
+\bibitem{bell09}
+  Robert M. Bell, Yehuda Koren, Chris Volinsky
+  \emph{Matrix Factorization Techniques for Recommender Systems}
+  Florham Park, NJ
+  2009
+  
+\bibitem{koren08}
+  Robert M. Bell, Yehuda Koren, Chris Volinsky
+  \emph{The BellKor solution to the Netflix Prize}
+  Florham Park, NJ
+  2009
+
+\bibitem{salakhutdinov07}
+  Ruslan Salakhutdinov, Andriy Mnih, Geoffrey Hinton
+  \emph{Restricted Boltzmann Machines for Collaborative Filtering}
+  Toronto, Ontario
+  2007
+  
+\bibitem{li03}
+  Qing Li, Byeong Man Kim
+  \emph{Clustering Approach for Hybrid Recommender System}
+  Kumi, South Korea
+  2003
+\end{thebibliography}
 
 
 \end{document}
