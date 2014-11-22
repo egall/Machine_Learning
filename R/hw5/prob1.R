@@ -21,7 +21,19 @@ print(which.min(reg_summary$cp))
 cat("rsq = ")
 print(which.max(reg_summary$adjr2))
 
-pdf("BIC.pdf")
-plot(reg_summary$adjr2, xlab = "Number of Variables", ylab = "Adjusted RSq")
+pdf("Adjr2.pdf")
+plot(reg_summary$adjr2, xlab = "Number of Variables", ylab = "Adjusted RSq", type = "l")
 points (4, reg_summary$adjr2[4], col="red", cex=2, pch =20)
+dev.off()
+
+
+pdf("bic.pdf")
+plot(reg_summary$bic, xlab = "Number of Variables", ylab = "bic", type = "l")
+points (4, reg_summary$bic[3], col="red", cex=2, pch =20)
+dev.off()
+
+
+pdf("cp.pdf")
+plot(reg_summary$cp, xlab = "Number of Variables", ylab = "CP", type = "l")
+points (4, reg_summary$cp[4], col="red", cex=2, pch =20)
 dev.off()
