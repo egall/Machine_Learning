@@ -20,4 +20,78 @@ rsq = [1] 4
 \includepdf[pages={1}]{bic.pdf}
 \includepdf[pages={1}]{cp.pdf}
 \includepdf[pages={1}]{adjr2.pdf}
+
+\section*{Problem 2}
+\subsection*{c}
+\includepdf[pages={1}]{trainingmse.pdf}
+\subsection*{d}
+\includepdf[pages={1}]{testmse.pdf}
+\subsection*{e}
+Model 15 has the lowest test MSE.\\
+\subsection*{f}
+\begin{verbatim}
+ [1]  0.08416949  0.00000000 -0.74255920  0.00000000  1.14136590  0.83065524
+ [7] -1.73567582  1.01058528  0.00000000  0.28645981 -0.51944548  0.00000000
+[13] -0.29197205  0.16706164  0.00000000  1.21964261 -1.89792374  2.07617863
+[19] -1.08201210  0.35911887
+(Intercept)         x.1         x.3         x.5         x.6         x.7 
+ -0.2202223   0.1101895  -0.6750294   0.9762085   0.8042316  -1.8396843 
+        x.8         x.9        x.10        x.11        x.12        x.16 
+  1.1182198   0.1247155   0.4014708  -0.3397521  -0.1960752   1.4241490 
+       x.17        x.18        x.19        x.20 
+ -1.7915828   1.8074764  -1.0706236   0.3124571 
+ \end{verbatim}
+The zeros are all pulled up and their values seem to be distributed equally over other coefficients.\\
+
+\section*{Problem 3}
+
+\subsection*{a}
+\includepdf[pages={1}]{prob3a.pdf}
+
+
+\subsection*{b}
+The RSS decreases as the degree of the polynomial increases. This is expected as higher degree polynomials are more flexible.\\
+\begin{verbatim}
+All of the RSS values:  [1] 2.768563 2.035262 1.934107 1.932981 1.915290 1.878257 1.849484 1.835630 1.833331 1.832171
+\end{verbatim}
+
+\subsection*{c}
+
+I would pick either a third degree polynomial. The graph starts to increase after the third degree, the fourth degree polynomial would have almost the same error, but it would also have a higher variance which would make it less desirable than the third degree polynomial.\\
+\includepdf[pages={1}]{Problem3d.pdf}
+
+
+\subsection*{d}
+I picked the splines that I figured would be around the middle of the dataset.\\
+\begin{verbatim}
+Call:
+lm(formula = nox ~ bs(dis, df = 4, knots = c(3, 6, 9)), data = Boston)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.132134 -0.039466 -0.009042  0.025344  0.187258 
+
+Coefficients:
+                                      Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                           0.709144   0.016099  44.049  < 2e-16 ***
+bs(dis, df = 4, knots = c(3, 6, 9))1  0.006631   0.025467   0.260    0.795    
+bs(dis, df = 4, knots = c(3, 6, 9))2 -0.258296   0.017759 -14.544  < 2e-16 ***
+bs(dis, df = 4, knots = c(3, 6, 9))3 -0.233326   0.027248  -8.563  < 2e-16 ***
+bs(dis, df = 4, knots = c(3, 6, 9))4 -0.336530   0.032140 -10.471  < 2e-16 ***
+bs(dis, df = 4, knots = c(3, 6, 9))5 -0.269575   0.058799  -4.585 5.75e-06 ***
+bs(dis, df = 4, knots = c(3, 6, 9))6 -0.303386   0.062631  -4.844 1.70e-06 ***
+---
+Signif. codes:  0 Ô***Õ 0.001 Ô**Õ 0.01 Ô*Õ 0.05 Ô.Õ 0.1 Ô Õ 1
+
+Residual standard error: 0.0612 on 499 degrees of freedom
+Multiple R-squared:  0.7244,	Adjusted R-squared:  0.7211 
+F-statistic: 218.6 on 6 and 499 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\subsection*{e}
+The error decreased as the degrees of freedom increased:\\
+\begin{verbatim}
+1.840173 1.833966 1.829884 1.816995 1.825653 1.792535 1.796992 1.788999
+\end{verbatim}
+ 
 \end{document}
