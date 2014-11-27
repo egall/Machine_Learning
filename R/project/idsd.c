@@ -1,3 +1,8 @@
+/* Author: Erik Steggall
+   Code based on the work from W. Richard Stevens
+   Most of this code is directly from the daemonize()
+   written in chapter 13 of his book Advanced Unix Programming
+*/
 #include <fcntl.h>              /* define open and such */
 #include <sys/resource.h>       /* systems resources */
 #include <signal.h>		/* for SIG_ERR */
