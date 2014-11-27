@@ -52,6 +52,7 @@ daemonize(const char *cmd)
   struct rlimit rl; 
   struct sigaction sa; 
   
+  printf("starting daemon\n");
   /* 
   * Clear file creation mask. 
   */ 
@@ -117,9 +118,11 @@ daemonize(const char *cmd)
     fd0, fd1, fd2); 
     exit(1); 
   } 
-  //system("touch /home/egall/projects/Machine_Learning/project/output.txt");
-  system("touch /tmp/output.txt");
-  system("Rscript /tmp/simpr.R");
+  //system("Rscript /home/egall/projects/Machine_Learning/R/project/simpr.R");
+  for(itor = 0; itor < 10; itor++){
+    system("Rscript /home/egall/projects/Machine_Learning/R/project/simpr.R");
+    sleep(5);
+  }
 /*
   FILE* idslog_fp;
   idslog_fp = fopen("/home/egall/projects/Machine_Learning/R/project/idslog.log", "w+");
